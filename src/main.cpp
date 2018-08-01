@@ -15,20 +15,13 @@ int main()
 	std::cin >> input;
 
 	dirMgr->setDirPath(input);
-
-	if (dirMgr->checkIsDirectory() == true)
-	{
-		std::cout << "VERZEICHNIS!" << std::endl;
-	} else
-	{
-		std::cout << "KEIN VERZEICHNIS!" << std::endl;
-	}
-
 	std::vector<std::string> folders = dirMgr->getDirectoryList();
 	int a = folders.size();
-
+	std::cout << "\n" << std::endl;
+	std::cout << "\n" << std::endl;
 	std::cout << "ORDNER: " << a << std::endl;
-
+	std::cout << "\n" << std::endl;
+	std::cout << "\n" << std::endl;
 	for (int i=0; i<a; i++)
 	{
 		std::cout << i+1 << ". ORDNER: " << folders.at(i) << std::endl;		

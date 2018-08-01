@@ -22,9 +22,9 @@ class DirectoryManager
         // SET-Methods
         void setDirPath(std::string dirPath);        
         // Class-Methods
-        bool checkIsDirectory();
+        bool checkIsDirectory(std::string directory);
         std::vector<std::string> getDirectoryList();
-
+        std::vector<std::string> sortOutFiles(std::vector<std::string> folderList);
 };
 
 #endif // __DIRECTORYMANAGER_H__

@@ -24,6 +24,7 @@ class DirectoryManager
         // Class-Methods
         bool checkIsDirectory(std::string directory);
         std::vector<std::string> getDirectoryList();
+        std::vector<std::string> getFullDirectoryList();
         std::vector<std::string> sortOutFiles(std::vector<std::string> folderList);
 };
 

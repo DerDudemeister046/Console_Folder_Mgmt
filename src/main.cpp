@@ -1,3 +1,38 @@
+#include <iostream>
+#include <dirent.h>
+
+// Testing includes
+#include <string>
+
+int main()
+{
+	//std::string dir = "C:/Users/Andi/Desktop/Console_Folder_Mgmt/test.txt";
+	
+	std::string dir = "G:/";
+	struct dirent *dr;	// Pointer for directory Entry
+	DIR* directory = opendir(dir.c_str());
+
+	if(directory != NULL)
+	{
+		std::cout << "Ist ein Verzeichnis!" << std::endl;
+	}
+	if (directory == NULL)
+	{
+		std::cout << "Ist kein Verzeichnis!" << std::endl;
+		return 0;
+	}
+
+	while ((dr = readdir(directory)) != NULL)
+	{
+		std::cout << "FOLDER: " << dr->d_name << std::endl;		
+	}
+
+	std::cin.get();
+	closedir(directory);
+	return 0;
+}
+
+/*
 // Includes
 #include <iostream>
 #include <string>
@@ -49,3 +84,4 @@ void enterDirectory()
 {
 
 }
+*/

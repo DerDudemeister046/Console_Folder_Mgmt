@@ -48,7 +48,8 @@ std::vector<std::string> DirectoryManager::getDirectoryList()
         dirHandle = opendir(getDirPath().c_str());
         while ((dirRent = readdir(dirHandle)) != NULL)
         {
-            folderList.push_back(dirRent->d_name);
+            std::string rootPath = getDirPath() + dirRent->d_name;            
+            folderList.push_back(rootPath);
         }
     }
     return folderList;

@@ -6,6 +6,8 @@
 #include <dirent.h>
 #include <errno.h>
 
+#include <iostream>
+
 class DirectoryManager 
 {
     private:

@@ -2,7 +2,7 @@
 
 DirectoryManager::DirectoryManager()
 {
-
+    dirPath = "./"; // set the current folder you are in as default
 }
 
 DirectoryManager::~DirectoryManager()
@@ -48,13 +48,28 @@ std::vector<std::string> DirectoryManager::getDirectoryList()
         dirHandle = opendir(getDirPath().c_str());
         while ((dirRent = readdir(dirHandle)) != NULL)
         {
-            std::cout << dirRent->d_name << std::endl;
             std::string rootPath = getDirPath() + dirRent->d_name; 
             folderList.push_back(rootPath);
-            std::cout << rootPath << std::endl;        
         }
     }    
     return sortOutFiles(folderList);
+}
+
+std::vector<std::string> DirectoryManager::getFullDirectoryList()
+{
+    std::vector<std::string> folderList;
+    bool start = checkIsDirectory(getDirPath()); // security check if a valid path is given
+    if (start)
+    {
+        dirHandle = opendir(getDirPath().c_str());
+        while ((dirRent = readdir(dirHandle)) != NULL)
+        {
+            std::string rootPath = getDirPath() + dirRent->d_name; 
+            folderList.push_back(rootPath);   
+        }
+    } 
+
+    return folderList;
 }
 
 std::vector<std::string> DirectoryManager::sortOutFiles(std::vector<std::string> folderList)
@@ -67,13 +82,10 @@ std::vector<std::string> DirectoryManager::sortOutFiles(std::vector<std::string>
         //std::cout << i+1 << ": " << folderList.at(i) << std::endl;
         if (checkIsDirectory(folderList.at(i)))
         {
-            std::cout << i+1 << ": - " << "TRUE" << std::endl;
             ruleOut.push_back(folderList.at(i));
         }
         if (!checkIsDirectory(folderList.at(i)))
-        {
-            std::cout << i+1 << ": - " << "FALSE" << std::endl;
-        }
+        {}
     }
 
     return ruleOut; // Output Vector without Files

@@ -1,3 +1,67 @@
+#include <iostream>
+#include <dirent.h>
+
+// Testing includes
+#include <string>
+#include "DirectoryManager.hpp"
+#include <vector>
+
+int main()
+{
+	std::string input = ""; 
+	DirectoryManager* dirMgr = new DirectoryManager;
+	std::cout << "" << std::endl;
+	std::cout << "Eingabe: ";
+	std::cin >> input;
+
+	dirMgr->setDirPath(input);
+
+	if (dirMgr->checkIsDirectory() == true)
+	{
+		std::cout << "VERZEICHNIS!" << std::endl;
+	} else
+	{
+		std::cout << "KEIN VERZEICHNIS!" << std::endl;
+	}
+
+	std::vector<std::string> folders = dirMgr->getDirectoryList();
+	int a = folders.size();
+
+	std::cout << "ORDNER: " << a << std::endl;
+
+	for (int i=0; i<a; i++)
+	{
+		std::cout << i+1 << ". ORDNER: " << folders.at(i) << std::endl;		
+	}
+
+		
+	//std::string dir = "C:/Users/Andi/Desktop/Console_Folder_Mgmt/test.txt";
+	/*
+	std::string dir = "G:/";
+	struct dirent *dr;	// Pointer for directory Entry
+	DIR* directory = opendir(dir.c_str());
+
+	if(directory != NULL)
+	{
+		std::cout << "Ist ein Verzeichnis!" << std::endl;
+	}
+	if (directory == NULL)
+	{
+		std::cout << "Ist kein Verzeichnis!" << std::endl;
+		return 0;
+	}
+
+	while ((dr = readdir(directory)) != NULL)
+	{
+		std::cout << "FOLDER: " << dr->d_name << std::endl;		
+	}
+
+	std::cin.get();
+	closedir(directory);
+	return 0;*/
+}
+
+/*
 // Includes
 #include <iostream>
 #include <string>
@@ -49,3 +113,4 @@ void enterDirectory()
 {
 
 }
+*/
